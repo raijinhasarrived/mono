@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { IProduct, IProductData } from '../models/Product.model';
+import { ICreate, IProduct, IProductData } from '../models/Product.model';
 import { useAppSelector } from '../redux/hooks';
 
 const userString = localStorage.getItem('user');
@@ -20,7 +20,7 @@ export const productsApi = createApi({
         method: 'GET',
       }),
     }),
-    createProduct: builder.mutation<IProductData, IProduct>({
+    createProduct: builder.mutation<IProductData, ICreate>({
       query: (body) => ({
         url: `/products`,
         method: 'POST',

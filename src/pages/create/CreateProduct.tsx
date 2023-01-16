@@ -1,11 +1,9 @@
-import React, { FC } from 'react';
-import { toast } from 'react-toastify';
+import React from 'react';
 
 import { useCreateProductMutation } from '../../services/ProductsApi';
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 interface IFormInput {
-  _id: string;
   name: string;
   description: string;
   price: number;
@@ -21,10 +19,23 @@ interface IFormInput {
 export const CreateProduct: React.FC = () => {
   const { register, handleSubmit } = useForm();
 
-  const [createProduct, { isSuccess, isLoading, error }] = useCreateProductMutation();
+  const [createProduct, { isSuccess, error }] = useCreateProductMutation();
 
-  const handleCreateProduct = async (formValues: IFormInput) => {
-    await createProduct(formValues);
+  const handleCreateProduct: SubmitHandler<FieldValues> = async (formValues) => {
+    const { name, description, price, weight, load, range, charge, battery, image, category } =
+      formValues;
+    await createProduct({
+      name,
+      description,
+      price,
+      weight,
+      load,
+      range,
+      charge,
+      battery,
+      image,
+      category,
+    });
     if (isSuccess) {
       console.log('succes');
     } else if (error) {

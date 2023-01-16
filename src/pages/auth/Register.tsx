@@ -42,7 +42,7 @@ export const Register = () => {
       console.log(registerData);
     }
     if (isRegisterError) {
-      toast.error(`User with ${registerError?.data?.message}`);
+      toast.error(`Registration failed`);
     }
   }, [isRegisterSuccess, isRegisterError]);
 
