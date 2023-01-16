@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.bgnav {
+  background: rgba(14, 13, 13, 0.1);
+  backdrop-filter: blur(1rem);
+}
+
+@layer base {
+  html {
+    font-family: 'Quicksand', sans-serif;
+  }
+}
